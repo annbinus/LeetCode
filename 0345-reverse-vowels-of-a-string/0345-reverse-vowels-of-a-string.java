@@ -1,22 +1,27 @@
 class Solution {
     public String reverseVowels(String s) {
-        Stack<Character> vowels = new Stack<Character>();
+        char[] word = s.toCharArray();
 
-        for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == 'a' || s.charAt(i) == 'e' || s.charAt(i) == 'i' ||
-            s.charAt(i) == 'o' || s.charAt(i) == 'u' || s.charAt(i) == 'A' || s.charAt(i) == 'E' || s.charAt(i) == 'I' || s.charAt(i) == 'O' || s.charAt(i) == 'U')
-            {
-                vowels.push(s.charAt(i));
-            }
+        int start = 0;
+        int end = s.length()-1;
+        String vowels = "aeiouAEIOU";
+
+        while(start < end){
+            while(start<end && vowels.indexOf(word[start]) == -1)
+                start++;
+
+            while(start<end && vowels.indexOf(word[end]) == -1)
+                end--;
+
+            char temp = word[start];
+            word[start] = word[end];
+            word[end] = temp;
+
+            start++;
+            end--;
         }
 
-        for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == 'a' || s.charAt(i) == 'e' || s.charAt(i) == 'i' ||
-            s.charAt(i) == 'o' || s.charAt(i) == 'u' || s.charAt(i) == 'A' || s.charAt(i) == 'E' || s.charAt(i) == 'I' || s.charAt(i) == 'O' || s.charAt(i) == 'U')
-            {
-                s = s.substring(0, i) + vowels.pop() + s.substring(i+1);
-            }
-        }
-        return s;
+        String res = new String(word);
+        return res;
     }
 }
