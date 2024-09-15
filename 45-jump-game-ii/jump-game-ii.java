@@ -1,28 +1,20 @@
 class Solution {
-    int ans = 0;
-
     public int jump(int[] nums) {
-        int i = 0;
-        while (i < nums.length - 1) {
-            i = helper(i, nums[i], nums);
-
+        int count = 0;
+        int far = 0, range = 0;
+        
+        if(nums.length==1) return count;
+        for(int i =0; i< nums.length; i++){
+            far = Math.max(i+nums[i], far);
+            if(i==range)
+                {
+                    count++;
+                    range = far;
+                    if(range>=nums.length-1)
+                        return count;
+                }
         }
-        return ans;
-    }
-
-    public int helper(int a, int b, int[] nums) {
-        ans++;
-        if (a + b >= nums.length - 1) {
-            return nums.length;
+        return count;
         }
-        int max = Integer.MIN_VALUE;
-        int temp = 0;
-        for (int i = a; i <= a + b; i++) {
-            if (nums[i] + i >= max) {
-                temp = i;
-                max = nums[i] + i;
-            }
-        }
-        return temp;
-    }
+    
 }
