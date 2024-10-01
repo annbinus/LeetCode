@@ -12,8 +12,8 @@ class Solution {
 
         int sum = 0;
 
-        for(int i = 0; i < s.length(); i++){
-            if((i < s.length()-1) && character.get(s.charAt(i)) < character.get(s.charAt(i+1))){
+        for(int i = s.length()-1; i>=0; i--){
+            if((4 * character.get(s.charAt(i)) < sum)){
                 sum -= character.get(s.charAt(i));
             }
             else{
