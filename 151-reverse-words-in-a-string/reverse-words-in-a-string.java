@@ -1,18 +1,24 @@
 class Solution {
     public String reverseWords(String s) {
         s = s.trim();
-        String[] arr = s.split("\\s+");
-        StringBuilder sb = new StringBuilder();
+        
+        Stack<String> st = new Stack<>();
+        int j = 0;
 
-        for(int i = arr.length-1; i>=0; i--){
-            
-            sb.append(arr[i]);
-            if(i>0)
-            {
-                sb.append(" ");
+        for(int i = 1; i < s.length(); i++){
+            if(s.charAt(i)==' ' && s.charAt(i-1)!=' '){
+                st.push(s.substring(j,i).trim());
+                j = i+1;
             }
 
         }
-        return sb.toString();
+        st.push(s.substring(j));
+        
+        StringBuilder sb = new StringBuilder();
+        while(!st.isEmpty()){
+            sb.append(st.pop()).append(" ");
+        }
+        
+        return sb.toString().trim();
     }
 }
