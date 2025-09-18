@@ -19,6 +19,7 @@ class Solution(object):
                 return
             if not node.left and not node.right:
                 leaves.append(node.val)
+                return
             getnode(node.left, leaves)
             getnode(node.right, leaves)
 
