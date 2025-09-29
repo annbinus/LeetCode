@@ -26,11 +26,11 @@ class Solution(object):
                 n, w = q.popleft()
                 if n == target:
                     return w
-
+                visited.add(n)
                 for nei, weight in pairs[n]:
                     if nei not in visited:
                         q.append([nei, w * weight])
-                        visited.add(nei)
+                        
                 
             return -1
 
