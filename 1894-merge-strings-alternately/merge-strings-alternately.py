@@ -5,11 +5,8 @@ class Solution(object):
         :type word2: str
         :rtype: str
         """
-        length = 0
-        if len(word1) < len(word2):
-            length = len(word1)
-        else:
-            length = len(word2)
+        length = min(len(word1), len(word2))
+        
         
         res = ""
 
